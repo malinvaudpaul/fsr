@@ -11,7 +11,11 @@
 Aller à  http://localhost:8081/addresses pour trouver la liste des adresses inscrites en base de données
 
 # TODO
-- [ ] faire le projet avec gradle
-- [ ] avoir des controllers fonctionnels -> faire du CRUD depuis Postman
+- [X] faire le projet avec gradle
+- [ ] avoir des controllers fonctionnels -> faire du CRUD depuis Postman:
+    - [X] Address
+    - [ ] Contact 
+    - [ ] ContactGroup
+    - [ ] PhoneNumber
 - [ ] injection de dépendances (@Autowired, etc..)
 - [ ] BONUS: tests automatiques
