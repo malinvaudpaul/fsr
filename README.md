@@ -16,6 +16,6 @@ Aller à  http://localhost:8081/addresses pour trouver la liste des adresses ins
     - [X] Address
     - [ ] Contact 
     - [ ] ContactGroup
-    - [ ] PhoneNumber
+    - [ ] phoneNum
 - [ ] injection de dépendances (@Autowired, etc..)
 - [ ] BONUS: tests automatiques

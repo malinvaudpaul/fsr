@@ -1,7 +1,7 @@
 package com.fsr.api;
 
-import com.fsr.entities.PhoneNumber;
-import com.fsr.services.ServicePhoneNumber;
+import com.fsr.entities.PhoneNum;
+import com.fsr.services.ServicePhoneNum;
 import java.net.URI;
 import java.util.List;
 import org.springframework.http.ResponseEntity;
@@ -19,27 +19,27 @@ import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 @RestController
 @CrossOrigin(origins = "http://localhost:3000")
 @RequestMapping(path = "/phoneNumbers")
-public class PhoneNumberController {
+public class PhoneNumController {
 
-  private ServicePhoneNumber servicePhoneNumber;
+  private ServicePhoneNum servicePhoneNum;
 
-  public PhoneNumberController() {
-    this.servicePhoneNumber = new ServicePhoneNumber();
+  public PhoneNumController() {
+    this.servicePhoneNum = new ServicePhoneNum();
   }
 
   // CREATE CONTROLLER
   @PostMapping(path = "", consumes = "application/json", produces = "application/json")
-  public ResponseEntity<Object> addphoneNumber(@RequestBody PhoneNumber phoneNumber) {
-    /*Integer id = servicePhoneNumber.readAll().size() + 1;
+  public ResponseEntity<Object> addphoneNum(@RequestBody PhoneNum phoneNum) {
+    /*Integer id = servicephoneNum.readAll().size() + 1;
 
-    phoneNumber.setId(id);*/
+    phoneNum.setId(id);*/
 
-    servicePhoneNumber.create(phoneNumber);
+    servicePhoneNum.create(phoneNum);
 
     URI location =
         ServletUriComponentsBuilder.fromCurrentRequest()
             .path("/{id}")
-            .buildAndExpand(phoneNumber.getId())
+            .buildAndExpand(phoneNum.getId())
             .toUri();
 
     return ResponseEntity.created(location).build();
@@ -47,25 +47,25 @@ public class PhoneNumberController {
 
   // READ CONTROLLERS
   @GetMapping(path = "/{id}", produces = "application/json")
-  public PhoneNumber getPhoneNumberById(@PathVariable("id") int id) {
-    return servicePhoneNumber.read(id);
+  public PhoneNum getphoneNumById(@PathVariable("id") int id) {
+    return servicePhoneNum.read(id);
   }
 
   @GetMapping(path = "", produces = "application/json")
-  public List<PhoneNumber> getPhoneNumbers() {
-    return servicePhoneNumber.readAll();
+  public List<PhoneNum> getphoneNums() {
+    return servicePhoneNum.readAll();
   }
 
   // UPDATE CONTROLLER
   @PatchMapping(path = "/{id}", consumes = "application/json", produces = "application/json")
-  public ResponseEntity<Object> updatePhoneNumber(
-      @PathVariable("id") int id, @RequestBody PhoneNumber phoneNumber) {
-    servicePhoneNumber.update(phoneNumber);
+  public ResponseEntity<Object> updatephoneNum(
+      @PathVariable("id") int id, @RequestBody PhoneNum phoneNum) {
+    servicePhoneNum.update(phoneNum);
 
     URI location =
         ServletUriComponentsBuilder.fromCurrentRequest()
             .path("/{id}")
-            .buildAndExpand(phoneNumber.getId())
+            .buildAndExpand(phoneNum.getId())
             .toUri();
 
     return ResponseEntity.created(location).build();
@@ -73,7 +73,7 @@ public class PhoneNumberController {
 
   // DELETE CONTROLLER
   @DeleteMapping(path = "/{id}", produces = "application/json")
-  public void deletePhoneNumber(@PathVariable("id") int id) {
-    servicePhoneNumber.delete(id);
+  public void deletephoneNum(@PathVariable("id") int id) {
+    servicePhoneNum.delete(id);
   }
 }

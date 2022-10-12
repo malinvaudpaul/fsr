@@ -15,8 +15,8 @@ import javax.persistence.Table;
 @Entity
 public class Contact {
 
-  @OneToMany(cascade = CascadeType.ALL, mappedBy = "contact")
-  Set<PhoneNumber> phones;
+  @OneToMany(cascade = CascadeType.ALL)
+  Set<PhoneNum> phones;
 
   private String firstName;
   private String lastName;
@@ -74,11 +74,11 @@ public class Contact {
     this.id = id;
   }
 
-  public Set<PhoneNumber> getPhones() {
+  public Set<PhoneNum> getPhones() {
     return phones;
   }
 
-  public void setPhones(Set<PhoneNumber> phones) {
+  public void setPhones(Set<PhoneNum> phones) {
     this.phones = phones;
   }
 

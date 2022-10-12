@@ -12,7 +12,7 @@ http://xmlns.jcp.org/xml/ns/persistence/persistence_2_1.xsd">
 
 		<!-- Entités -->
 		<class>com.fsr.entities.Contact</class>
-		<class>com.fsr.entities.PhoneNumber</class>
+		<class>com.fsr.entities.PhoneNum</class>
 		<class>com.fsr.entities.Address</class>
 		<class>com.fsr.entities.ContactGroup</class>
 		

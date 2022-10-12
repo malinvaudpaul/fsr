@@ -1,15 +1,15 @@
 package com.fsr.daos;
 
-import com.fsr.entities.PhoneNumber;
+import com.fsr.entities.PhoneNum;
 import com.fsr.util.JpaUtil;
 import java.util.List;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityTransaction;
 
-public class DAOPhoneNumber implements IDAO<PhoneNumber> {
+public class DAOPhoneNum implements IDAO<PhoneNum> {
 
   @Override
-  public boolean create(PhoneNumber entity) {
+  public boolean create(PhoneNum entity) {
     boolean success = false;
     try {
 
@@ -31,10 +31,10 @@ public class DAOPhoneNumber implements IDAO<PhoneNumber> {
   }
 
   @Override
-  public PhoneNumber read(int id) {
+  public PhoneNum read(int id) {
     try {
       EntityManager em = JpaUtil.getEmf().createEntityManager();
-      PhoneNumber pn = em.find(PhoneNumber.class, id);
+      PhoneNum pn = em.find(PhoneNum.class, id);
       return pn;
 
     } catch (Exception e) {
@@ -44,11 +44,11 @@ public class DAOPhoneNumber implements IDAO<PhoneNumber> {
   }
 
   @Override
-  public List<PhoneNumber> readAll() {
+  public List<PhoneNum> readAll() {
     try {
       EntityManager em = JpaUtil.getEmf().createEntityManager();
 
-      return em.createQuery("SELECT pn FROM PhoneNumber pn").getResultList();
+      return em.createQuery("SELECT pn FROM phoneNum pn").getResultList();
     } catch (Exception e) {
       e.printStackTrace();
       return null;
@@ -56,18 +56,18 @@ public class DAOPhoneNumber implements IDAO<PhoneNumber> {
   }
 
   @Override
-  public boolean update(PhoneNumber entity) {
+  public boolean update(PhoneNum entity) {
     boolean success = false;
     try {
       EntityManager em = JpaUtil.getEmf().createEntityManager();
-      PhoneNumber pn = em.find(PhoneNumber.class, entity.getId());
+      PhoneNum pn = em.find(PhoneNum.class, entity.getId());
 
       EntityTransaction tx = em.getTransaction();
       tx.begin();
 
       pn.setContact(entity.getContact());
       pn.setPhoneKind(entity.getPhoneKind());
-      pn.setPhoneNumber(entity.getPhoneNumber());
+      pn.setphoneNum(entity.getphoneNum());
 
       tx.commit();
 
@@ -84,7 +84,7 @@ public class DAOPhoneNumber implements IDAO<PhoneNumber> {
     boolean success = false;
     try {
       EntityManager em = JpaUtil.getEmf().createEntityManager();
-      PhoneNumber pn = em.find(PhoneNumber.class, id);
+      PhoneNum pn = em.find(PhoneNum.class, id);
 
       EntityTransaction tx = em.getTransaction();
       tx.begin();

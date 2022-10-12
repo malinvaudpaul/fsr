@@ -105,20 +105,20 @@ public class DAOContact implements IDAO<Contact> {
 
 /*Contact c2 = new Contact("Jean", "PIERRE", "JeanPierre@gmail.com");
 
-PhoneNumber pn1 = new PhoneNumber();
-PhoneNumber pn2 = new PhoneNumber();
-PhoneNumber pn3 = new PhoneNumber();
+phoneNum pn1 = new phoneNum();
+phoneNum pn2 = new phoneNum();
+phoneNum pn3 = new phoneNum();
 Address a1 = new Address();
 Address a2 = new Address();
 
 pn1.setPhoneKind("Samsung");
-pn1.setPhoneNumber("0742652475");
+pn1.setphoneNum("0742652475");
 
 pn2.setPhoneKind("Xiaomi");
-pn2.setPhoneNumber("0643651284");
+pn2.setphoneNum("0643651284");
 
 pn3.setPhoneKind("Apple");
-pn3.setPhoneNumber("0712774511");
+pn3.setphoneNum("0712774511");
 
 a1.setCity("Nanterre");
 a1.setCountry("France");

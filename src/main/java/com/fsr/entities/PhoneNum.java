@@ -7,26 +7,26 @@ import javax.persistence.Id;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
-@Table(name = "phone_numbers")
+@Table(name = "phone_num")
 @Entity
-public class PhoneNumber {
+public class PhoneNum {
 
   @Id
   @GeneratedValue(strategy = GenerationType.IDENTITY)
   private int id;
 
   private String phoneKind;
-  private String phoneNumber;
+  private String phoneNum;
 
   @ManyToOne private Contact contact;
 
-  public PhoneNumber() {}
+  public PhoneNum() {}
 
-  public PhoneNumber(int id, String phoneKind, String phoneNumber, Contact contact) {
+  public PhoneNum(int id, String phoneKind, String phoneNum, Contact contact) {
     super();
     setId(id);
     setPhoneKind(phoneKind);
-    setPhoneNumber(phoneNumber);
+    setphoneNum(phoneNum);
     setContact(contact);
   }
 
@@ -46,12 +46,12 @@ public class PhoneNumber {
     this.phoneKind = phoneKind;
   }
 
-  public String getPhoneNumber() {
-    return phoneNumber;
+  public String getphoneNum() {
+    return phoneNum;
   }
 
-  public void setPhoneNumber(String phoneNumber) {
-    this.phoneNumber = phoneNumber;
+  public void setphoneNum(String phoneNum) {
+    this.phoneNum = phoneNum;
   }
 
   public Contact getContact() {
