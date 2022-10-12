@@ -1,6 +1,5 @@
 package com.fsr.entities;
 
-import java.util.HashSet;
 import java.util.Set;
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
@@ -19,14 +18,14 @@ public class ContactGroup {
   private String groupName;
 
   @ManyToMany(cascade = CascadeType.PERSIST)
-  private Set<Contact> contactGroups = new HashSet<Contact>();
+  private Set<Contact> contacts;
 
   public String getGroupName() {
     return groupName;
   }
 
   public void addContact(Contact contact) {
-    this.contactGroups.add(contact);
+    this.contacts.add(contact);
   }
 
   public void setGroupName(String groupName) {
@@ -34,11 +33,11 @@ public class ContactGroup {
   }
 
   public Set<Contact> getContactGroups() {
-    return contactGroups;
+    return contacts;
   }
 
   public void setContactGroups(Set<Contact> contactGroups) {
-    this.contactGroups = contactGroups;
+    this.contacts = contactGroups;
   }
 
   public ContactGroup() {}
@@ -49,7 +48,7 @@ public class ContactGroup {
 
   public ContactGroup(String groupName, Set<Contact> contactGroups) {
     this.groupName = groupName;
-    this.contactGroups = contactGroups;
+    this.contacts = contactGroups;
   }
 
   public int getGroupId() {

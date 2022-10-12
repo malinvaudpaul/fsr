@@ -37,7 +37,7 @@ public class ContactController {
     URI location =
         ServletUriComponentsBuilder.fromCurrentRequest()
             .path("/{id}")
-            .buildAndExpand(contact.getIdContact())
+            .buildAndExpand(contact.getId())
             .toUri();
 
     return ResponseEntity.created(location).build();
@@ -63,7 +63,7 @@ public class ContactController {
     URI location =
         ServletUriComponentsBuilder.fromCurrentRequest()
             .path("/{id}")
-            .buildAndExpand(contact.getIdContact())
+            .buildAndExpand(contact.getId())
             .toUri();
 
     return ResponseEntity.created(location).build();

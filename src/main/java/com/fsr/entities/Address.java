@@ -4,22 +4,18 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.OneToOne;
 
 @Entity
 public class Address {
 
   @Id
   @GeneratedValue(strategy = GenerationType.IDENTITY)
-  private int idAddress;
+  private int id;
 
   private String street;
   private String city;
   private String zip;
   private String country;
-
-  @OneToOne(mappedBy = "address")
-  private Contact contact;
 
   public Address() {}
 
@@ -34,12 +30,12 @@ public class Address {
     return street;
   }
 
-  public int getIdAddress() {
-    return idAddress;
+  public int getId() {
+    return id;
   }
 
-  public void setIdAddress(int id) {
-    this.idAddress = id;
+  public void setId(int id) {
+    this.id = id;
   }
 
   public String getCity() {
@@ -68,13 +64,5 @@ public class Address {
 
   public void setStreet(String street) {
     this.street = street;
-  }
-
-  public Contact getContact() {
-    return contact;
-  }
-
-  public void setContact(Contact contact) {
-    this.contact = contact;
   }
 }

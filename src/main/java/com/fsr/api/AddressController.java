@@ -4,7 +4,6 @@ import com.fsr.entities.Address;
 import com.fsr.services.ServiceAddress;
 import java.net.URI;
 import java.util.List;
-
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -37,7 +36,7 @@ public class AddressController {
     URI location =
         ServletUriComponentsBuilder.fromCurrentRequest()
             .path("/{id}")
-            .buildAndExpand(address.getIdAddress())
+            .buildAndExpand(address.getId())
             .toUri();
 
     return ResponseEntity.created(location).build();
@@ -65,7 +64,7 @@ public class AddressController {
     URI location =
         ServletUriComponentsBuilder.fromCurrentRequest()
             .path("/{id}")
-            .buildAndExpand(address.getIdAddress())
+            .buildAndExpand(address.getId())
             .toUri();
 
     return ResponseEntity.created(location).build();

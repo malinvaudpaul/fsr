@@ -5,17 +5,17 @@ import com.fsr.util.JpaUtil;
 import java.util.List;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityTransaction;
+import javax.persistence.PersistenceContext;
 
 public class DAOAddress implements IDAO<Address> {
+
+  @PersistenceContext private EntityManager em = JpaUtil.getEmf().createEntityManager();
 
   @Override
   public boolean create(Address entity) {
     boolean success = false;
     try {
-
-      EntityManager em = JpaUtil.getEmf().createEntityManager();
-
-      EntityTransaction tx = em.getTransaction();
+      EntityTransaction tx = this.em.getTransaction();
       tx.begin();
 
       em.persist(entity);
@@ -33,8 +33,7 @@ public class DAOAddress implements IDAO<Address> {
   @Override
   public Address read(int id) {
     try {
-      EntityManager em = JpaUtil.getEmf().createEntityManager();
-      Address a = em.find(Address.class, id);
+      Address a = this.em.find(Address.class, id);
       return a;
 
     } catch (Exception e) {
@@ -46,9 +45,7 @@ public class DAOAddress implements IDAO<Address> {
   @Override
   public List<Address> readAll() {
     try {
-      EntityManager em = JpaUtil.getEmf().createEntityManager();
-
-      return em.createQuery("SELECT c FROM Address c").getResultList();
+      return this.em.createQuery("SELECT c FROM Address c").getResultList();
     } catch (Exception e) {
       e.printStackTrace();
       return null;
@@ -59,8 +56,7 @@ public class DAOAddress implements IDAO<Address> {
   public boolean update(Address entity) {
     boolean success = false;
     try {
-      EntityManager em = JpaUtil.getEmf().createEntityManager();
-      Address a = em.find(Address.class, entity.getIdAddress());
+      Address a = this.em.find(Address.class, entity.getId());
 
       EntityTransaction tx = em.getTransaction();
       tx.begin();
@@ -84,8 +80,7 @@ public class DAOAddress implements IDAO<Address> {
   public boolean delete(int id) {
     boolean success = false;
     try {
-      EntityManager em = JpaUtil.getEmf().createEntityManager();
-      Address a = em.find(Address.class, id);
+      Address a = this.em.find(Address.class, id);
 
       EntityTransaction tx = em.getTransaction();
       tx.begin();

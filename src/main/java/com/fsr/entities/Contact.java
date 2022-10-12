@@ -1,13 +1,12 @@
 package com.fsr.entities;
 
-import java.util.HashSet;
 import java.util.Set;
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
+import javax.persistence.ManyToMany;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 
@@ -15,7 +14,7 @@ import javax.persistence.OneToOne;
 public class Contact {
 
   @OneToMany(cascade = CascadeType.ALL, mappedBy = "contact")
-  Set<PhoneNumber> phones = new HashSet<PhoneNumber>();
+  Set<PhoneNumber> phones;
 
   private String firstName;
   private String lastName;
@@ -23,24 +22,22 @@ public class Contact {
 
   @Id
   @GeneratedValue(strategy = GenerationType.IDENTITY)
-  private long idContact;
+  private int id;
 
   @OneToOne(cascade = CascadeType.PERSIST)
-  @JoinColumn(name = "idAddresse")
-  private Address address;
+  private Address add;
+
+  @ManyToMany(cascade = CascadeType.PERSIST)
+  private Set<ContactGroup> books;
 
   public Contact() {}
 
-  public Contact(String firstName, String lastName, String email, long idContact) {
-    this(firstName, lastName, email);
-    this.idContact = idContact;
-  }
-
-  public Contact(String firstName, String lastName, String email) {
-    super();
+  public Contact(String firstName, String lastName, String email, int id, Address address) {
     this.firstName = firstName;
     this.lastName = lastName;
     this.email = email;
+    this.id = id;
+    this.add = address;
   }
 
   public String getEmail() {
@@ -67,12 +64,12 @@ public class Contact {
     this.lastName = lastname;
   }
 
-  public long getIdContact() {
-    return idContact;
+  public long getId() {
+    return id;
   }
 
-  public void setIdContact(long idContact) {
-    this.idContact = idContact;
+  public void setId(int id) {
+    this.id = id;
   }
 
   public Set<PhoneNumber> getPhones() {
@@ -84,10 +81,10 @@ public class Contact {
   }
 
   public Address getAddress() {
-    return address;
+    return add;
   }
 
   public void setAddress(Address address) {
-    this.address = address;
+    this.add = address;
   }
 }

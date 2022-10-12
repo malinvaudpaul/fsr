@@ -59,7 +59,7 @@ public class DAOContact implements IDAO<Contact> {
     boolean success = false;
     try {
       EntityManager em = JpaUtil.getEmf().createEntityManager();
-      Contact c = em.find(Contact.class, entity.getIdContact());
+      Contact c = em.find(Contact.class, entity.getId());
 
       EntityTransaction tx = em.getTransaction();
       tx.begin();
