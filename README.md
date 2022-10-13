@@ -17,5 +17,6 @@ Aller à  http://localhost:8081/addresses pour trouver la liste des adresses ins
     - [ ] Contact 
     - [ ] ContactGroup
     - [ ] phoneNum
+- [ ] résoudre le pb de _java.lang.IllegalStateException: Cannot begin Transaction on closed Session/EntityManager_
 - [ ] injection de dépendances (@Autowired, etc..)
 - [ ] BONUS: tests automatiques
