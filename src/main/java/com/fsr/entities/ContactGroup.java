@@ -2,6 +2,7 @@ package com.fsr.entities;
 
 import java.util.HashSet;
 import java.util.Set;
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -15,8 +16,10 @@ public class ContactGroup {
 
   @Id
   @GeneratedValue(strategy = GenerationType.IDENTITY)
+  @Column(name = "group_id")
   private int groupId;
 
+  @Column(name = "group_name")
   private String groupName;
 
   @ManyToMany(mappedBy = "books")

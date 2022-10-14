@@ -12,11 +12,11 @@ Aller à  http://localhost:8081/addresses pour trouver la liste des adresses ins
 
 # TODO
 - [X] faire le projet avec gradle
-- [ ] avoir des controllers fonctionnels -> faire du CRUD depuis Postman:
+- [X] avoir des controllers fonctionnels -> faire du CRUD depuis Postman:
     - [X] Address
-    - [ ] Contact 
-    - [ ] ContactGroup
-    - [ ] phoneNum
+    - [X] Contact 
+    - [X] ContactGroup
+    - [X] phoneNum
 - [ ] résoudre le pb de _java.lang.IllegalStateException: Cannot begin Transaction on closed Session/EntityManager_
 - [ ] injection de dépendances (@Autowired, etc..)
 - [ ] BONUS: tests automatiques

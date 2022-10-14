@@ -12,7 +12,7 @@ public class Address {
 
   @Id
   @GeneratedValue(strategy = GenerationType.IDENTITY)
-  private int idAddress;
+  private int id;
 
   private String street;
   private String city;
@@ -33,11 +33,11 @@ public class Address {
   }
 
   public int getId() {
-    return idAddress;
+    return id;
   }
 
   public void setId(int id) {
-    this.idAddress = id;
+    this.id = id;
   }
 
   public String getCity() {

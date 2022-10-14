@@ -1,5 +1,6 @@
 package com.fsr.entities;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -8,19 +9,22 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
-@Table(name = "phone_num")
+@Table(name = "phone_nums")
 @Entity
 public class PhoneNum {
 
   @Id
   @GeneratedValue(strategy = GenerationType.IDENTITY)
-  private int idPhoneNum;
+  private int id;
 
+  @Column(name = "phone_kind")
   private String phoneKind;
+
+  @Column(name = "phone_num")
   private String phoneNum;
 
   @ManyToOne
-  @JoinColumn(name = "idContact")
+  @JoinColumn(name = "id_contact")
   private Contact contact;
 
   public PhoneNum() {}
@@ -29,16 +33,16 @@ public class PhoneNum {
     super();
     setId(id);
     setPhoneKind(phoneKind);
-    setphoneNum(phoneNum);
+    setPhoneNum(phoneNum);
     setContact(contact);
   }
 
   public int getId() {
-    return idPhoneNum;
+    return id;
   }
 
   public void setId(int id) {
-    this.idPhoneNum = id;
+    this.id = id;
   }
 
   public String getPhoneKind() {
@@ -49,11 +53,11 @@ public class PhoneNum {
     this.phoneKind = phoneKind;
   }
 
-  public String getphoneNum() {
+  public String getPhoneNum() {
     return phoneNum;
   }
 
-  public void setphoneNum(String phoneNum) {
+  public void setPhoneNum(String phoneNum) {
     this.phoneNum = phoneNum;
   }
 

@@ -3,6 +3,7 @@ package com.fsr.entities;
 import java.util.HashSet;
 import java.util.Set;
 import javax.persistence.CascadeType;
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -21,16 +22,20 @@ public class Contact {
   @OneToMany(cascade = CascadeType.ALL, mappedBy = "contact")
   Set<PhoneNum> phones = new HashSet<PhoneNum>();
 
+  @Column(name = "first_name")
   private String firstName;
+
+  @Column(name = "last_name")
   private String lastName;
+
   private String email;
 
   @Id
   @GeneratedValue(strategy = GenerationType.IDENTITY)
-  private int idContact;
+  private int id;
 
   @OneToOne(cascade = CascadeType.PERSIST)
-  @JoinColumn(name = "idAddress")
+  @JoinColumn(name = "id_address")
   private Address add;
 
   @ManyToMany(cascade = CascadeType.PERSIST)
@@ -46,7 +51,7 @@ public class Contact {
     this.firstName = firstName;
     this.lastName = lastName;
     this.email = email;
-    this.idContact = id;
+    this.id = id;
     this.add = address;
   }
 
@@ -75,11 +80,11 @@ public class Contact {
   }
 
   public long getId() {
-    return idContact;
+    return id;
   }
 
   public void setId(int id) {
-    this.idContact = id;
+    this.id = id;
   }
 
   public Set<PhoneNum> getPhones() {
