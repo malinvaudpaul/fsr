@@ -48,7 +48,7 @@ public class DAOPhoneNum implements IDAO<PhoneNum> {
     try {
       EntityManager em = JpaUtil.getEmf().createEntityManager();
 
-      return em.createQuery("SELECT pn FROM phoneNum pn").getResultList();
+      return em.createQuery("SELECT pn FROM phone_num pn").getResultList();
     } catch (Exception e) {
       e.printStackTrace();
       return null;

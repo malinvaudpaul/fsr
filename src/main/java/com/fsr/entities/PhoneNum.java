@@ -4,6 +4,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
@@ -13,12 +14,14 @@ public class PhoneNum {
 
   @Id
   @GeneratedValue(strategy = GenerationType.IDENTITY)
-  private int id;
+  private int idPhoneNum;
 
   private String phoneKind;
   private String phoneNum;
 
-  @ManyToOne private Contact contact;
+  @ManyToOne
+  @JoinColumn(name = "idContact")
+  private Contact contact;
 
   public PhoneNum() {}
 
@@ -31,11 +34,11 @@ public class PhoneNum {
   }
 
   public int getId() {
-    return id;
+    return idPhoneNum;
   }
 
   public void setId(int id) {
-    this.id = id;
+    this.idPhoneNum = id;
   }
 
   public String getPhoneKind() {

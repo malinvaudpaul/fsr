@@ -7,6 +7,8 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
@@ -16,7 +18,7 @@ import javax.persistence.Table;
 @Entity
 public class Contact {
 
-  @OneToMany(cascade = CascadeType.ALL)
+  @OneToMany(cascade = CascadeType.ALL, mappedBy = "contact")
   Set<PhoneNum> phones = new HashSet<PhoneNum>();
 
   private String firstName;
@@ -25,12 +27,17 @@ public class Contact {
 
   @Id
   @GeneratedValue(strategy = GenerationType.IDENTITY)
-  private int id;
+  private int idContact;
 
   @OneToOne(cascade = CascadeType.PERSIST)
+  @JoinColumn(name = "idAddress")
   private Address add;
 
   @ManyToMany(cascade = CascadeType.PERSIST)
+  @JoinTable(
+      name = "CTC_GRP",
+      joinColumns = @JoinColumn(name = "CTC_ID"),
+      inverseJoinColumns = @JoinColumn(name = "GRP_ID"))
   private Set<ContactGroup> books = new HashSet<ContactGroup>();
 
   public Contact() {}
@@ -39,7 +46,7 @@ public class Contact {
     this.firstName = firstName;
     this.lastName = lastName;
     this.email = email;
-    this.id = id;
+    this.idContact = id;
     this.add = address;
   }
 
@@ -68,11 +75,11 @@ public class Contact {
   }
 
   public long getId() {
-    return id;
+    return idContact;
   }
 
   public void setId(int id) {
-    this.id = id;
+    this.idContact = id;
   }
 
   public Set<PhoneNum> getPhones() {

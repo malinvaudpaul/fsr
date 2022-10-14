@@ -29,7 +29,7 @@ public class PhoneNumController {
 
   // CREATE CONTROLLER
   @PostMapping(path = "", consumes = "application/json", produces = "application/json")
-  public ResponseEntity<Object> addphoneNum(@RequestBody PhoneNum phoneNum) {
+  public ResponseEntity<Object> addPhoneNum(@RequestBody PhoneNum phoneNum) {
     /*Integer id = servicephoneNum.readAll().size() + 1;
 
     phoneNum.setId(id);*/
@@ -47,18 +47,18 @@ public class PhoneNumController {
 
   // READ CONTROLLERS
   @GetMapping(path = "/{id}", produces = "application/json")
-  public PhoneNum getphoneNumById(@PathVariable("id") int id) {
+  public PhoneNum getPhoneNumById(@PathVariable("id") int id) {
     return servicePhoneNum.read(id);
   }
 
   @GetMapping(path = "", produces = "application/json")
-  public List<PhoneNum> getphoneNums() {
+  public List<PhoneNum> getPhoneNums() {
     return servicePhoneNum.readAll();
   }
 
   // UPDATE CONTROLLER
   @PatchMapping(path = "/{id}", consumes = "application/json", produces = "application/json")
-  public ResponseEntity<Object> updatephoneNum(
+  public ResponseEntity<Object> updatePhoneNum(
       @PathVariable("id") int id, @RequestBody PhoneNum phoneNum) {
     servicePhoneNum.update(phoneNum);
 
@@ -73,7 +73,7 @@ public class PhoneNumController {
 
   // DELETE CONTROLLER
   @DeleteMapping(path = "/{id}", produces = "application/json")
-  public void deletephoneNum(@PathVariable("id") int id) {
+  public void deletePhoneNum(@PathVariable("id") int id) {
     servicePhoneNum.delete(id);
   }
 }

@@ -2,7 +2,6 @@ package com.fsr.entities;
 
 import java.util.HashSet;
 import java.util.Set;
-import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -20,7 +19,7 @@ public class ContactGroup {
 
   private String groupName;
 
-  @ManyToMany(cascade = CascadeType.PERSIST)
+  @ManyToMany(mappedBy = "books")
   private Set<Contact> contacts = new HashSet<Contact>();
 
   public String getGroupName() {
