@@ -1,5 +1,6 @@
 package com.fsr.entities;
 
+import java.util.HashSet;
 import java.util.Set;
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
@@ -16,7 +17,7 @@ import javax.persistence.Table;
 public class Contact {
 
   @OneToMany(cascade = CascadeType.ALL)
-  Set<PhoneNum> phones;
+  Set<PhoneNum> phones = new HashSet<PhoneNum>();
 
   private String firstName;
   private String lastName;
@@ -30,7 +31,7 @@ public class Contact {
   private Address add;
 
   @ManyToMany(cascade = CascadeType.PERSIST)
-  private Set<ContactGroup> books;
+  private Set<ContactGroup> books = new HashSet<ContactGroup>();
 
   public Contact() {}
 

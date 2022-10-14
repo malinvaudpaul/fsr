@@ -1,5 +1,6 @@
 package com.fsr.entities;
 
+import java.util.HashSet;
 import java.util.Set;
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
@@ -20,7 +21,7 @@ public class ContactGroup {
   private String groupName;
 
   @ManyToMany(cascade = CascadeType.PERSIST)
-  private Set<Contact> contacts;
+  private Set<Contact> contacts = new HashSet<Contact>();
 
   public String getGroupName() {
     return groupName;
