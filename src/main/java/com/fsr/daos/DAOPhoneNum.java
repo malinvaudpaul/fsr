@@ -5,7 +5,6 @@ import com.fsr.util.JpaUtil;
 import java.util.List;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityTransaction;
-
 import org.springframework.stereotype.Repository;
 
 @Repository("DAOPhoneNum")
@@ -25,7 +24,6 @@ public class DAOPhoneNum implements IDAO<PhoneNum> {
 
       tx.commit();
 
-      em.close();
       success = true;
     } catch (Exception e) {
       e.printStackTrace();
@@ -74,7 +72,6 @@ public class DAOPhoneNum implements IDAO<PhoneNum> {
 
       tx.commit();
 
-      em.close();
       success = true;
     } catch (Exception e) {
       e.printStackTrace();
@@ -96,7 +93,6 @@ public class DAOPhoneNum implements IDAO<PhoneNum> {
 
       tx.commit();
 
-      em.close();
       success = true;
     } catch (Exception e) {
       e.printStackTrace();

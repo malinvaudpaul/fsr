@@ -6,7 +6,6 @@ import java.util.List;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityTransaction;
 import javax.persistence.PersistenceContext;
-
 import org.springframework.stereotype.Repository;
 
 @Repository("DAOAddress")
@@ -25,7 +24,6 @@ public class DAOAddress implements IDAO<Address> {
 
       tx.commit();
 
-      em.close();
       success = true;
     } catch (Exception e) {
       e.printStackTrace();
@@ -71,7 +69,6 @@ public class DAOAddress implements IDAO<Address> {
 
       tx.commit();
 
-      em.close();
       success = true;
     } catch (Exception e) {
       e.printStackTrace();
@@ -92,7 +89,6 @@ public class DAOAddress implements IDAO<Address> {
 
       tx.commit();
 
-      em.close();
       success = true;
     } catch (Exception e) {
       e.printStackTrace();

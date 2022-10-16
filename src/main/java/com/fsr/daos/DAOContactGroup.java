@@ -5,7 +5,6 @@ import com.fsr.util.JpaUtil;
 import java.util.List;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityTransaction;
-
 import org.springframework.stereotype.Repository;
 
 @Repository("DAOContactGroup")
@@ -25,7 +24,6 @@ public class DAOContactGroup implements IDAO<ContactGroup> {
 
       tx.commit();
 
-      em.close();
       success = true;
     } catch (Exception e) {
       e.printStackTrace();
@@ -73,7 +71,6 @@ public class DAOContactGroup implements IDAO<ContactGroup> {
 
       tx.commit();
 
-      em.close();
       success = true;
     } catch (Exception e) {
       e.printStackTrace();
@@ -95,7 +92,6 @@ public class DAOContactGroup implements IDAO<ContactGroup> {
 
       tx.commit();
 
-      em.close();
       success = true;
     } catch (Exception e) {
       e.printStackTrace();
