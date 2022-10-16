@@ -4,16 +4,15 @@ import com.fsr.entities.Contact;
 import com.fsr.services.ServiceContact;
 import java.net.URI;
 import java.util.List;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PatchMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -28,8 +27,7 @@ public class ContactController {
   @Qualifier("ServiceContact")
   private ServiceContact serviceContact;
 
-  public ContactController() {
-  }
+  public ContactController() {}
 
   // CREATE CONTROLLER
   @PostMapping(path = "", consumes = "application/json", produces = "application/json")
@@ -61,7 +59,7 @@ public class ContactController {
   }
 
   // UPDATE CONTROLLER
-  @PatchMapping(path = "/{id}", consumes = "application/json", produces = "application/json")
+  @PutMapping(path = "/{id}", consumes = "application/json", produces = "application/json")
   public ResponseEntity<Object> updateContact(
       @PathVariable("id") int id, @RequestBody Contact contact) {
     serviceContact.update(contact);
