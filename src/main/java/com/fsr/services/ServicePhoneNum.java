@@ -4,9 +4,16 @@ import com.fsr.daos.DAOPhoneNum;
 import com.fsr.entities.PhoneNum;
 import java.util.List;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.stereotype.Service;
+
+@Service("ServicePhoneNum")
 public class ServicePhoneNum implements IService<PhoneNum> {
 
-  DAOPhoneNum daopn = new DAOPhoneNum();
+  @Autowired
+  @Qualifier("DAOPhoneNum")
+  DAOPhoneNum daopn;
 
   @Override
   public void create(PhoneNum t) {
@@ -22,8 +29,7 @@ public class ServicePhoneNum implements IService<PhoneNum> {
   @Override
   public PhoneNum read(int id) {
     try {
-      PhoneNum a = daopn.read(id);
-      return a;
+      return daopn.read(id);
     } catch (Exception e) {
       e.printStackTrace();
       return null;
@@ -33,8 +39,7 @@ public class ServicePhoneNum implements IService<PhoneNum> {
   @Override
   public List<PhoneNum> readAll() {
     try {
-      List<PhoneNum> phoneNumes = daopn.readAll();
-      return phoneNumes;
+      return daopn.readAll();
     } catch (Exception e) {
       e.printStackTrace();
       return null;

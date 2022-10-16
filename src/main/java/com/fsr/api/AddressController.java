@@ -4,6 +4,9 @@ import com.fsr.entities.Address;
 import com.fsr.services.ServiceAddress;
 import java.net.URI;
 import java.util.List;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -21,17 +24,15 @@ import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 @RequestMapping(path = "/addresses")
 public class AddressController {
 
+  @Autowired
+  @Qualifier("ServiceAddress")
   private ServiceAddress serviceAddress;
 
-  public AddressController() {
-    this.serviceAddress = new ServiceAddress();
-  }
+  public AddressController() {}
 
   // CREATE CONTROLLER
   @PostMapping(path = "", consumes = "application/json", produces = "application/json")
   public ResponseEntity<Object> addAddress(@RequestBody Address address) {
-    /*Integer id = serviceAddress.readAll().size() + 1;
-    address.setIdAddress(id);*/
 
     serviceAddress.create(address);
 

@@ -6,6 +6,9 @@ import java.util.List;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityTransaction;
 
+import org.springframework.stereotype.Repository;
+
+@Repository("DAOContact")
 public class DAOContact implements IDAO<Contact> {
   @Override
   public boolean create(Contact entity) {

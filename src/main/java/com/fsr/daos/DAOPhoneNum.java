@@ -6,6 +6,9 @@ import java.util.List;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityTransaction;
 
+import org.springframework.stereotype.Repository;
+
+@Repository("DAOPhoneNum")
 public class DAOPhoneNum implements IDAO<PhoneNum> {
 
   @Override

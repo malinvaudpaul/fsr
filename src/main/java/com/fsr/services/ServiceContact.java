@@ -4,9 +4,16 @@ import com.fsr.daos.DAOContact;
 import com.fsr.entities.Contact;
 import java.util.List;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.stereotype.Service;
+
+@Service("ServiceContact")
 public class ServiceContact implements IService<Contact> {
 
-  DAOContact daoc = new DAOContact();
+  @Autowired
+  @Qualifier("DAOContact")
+  private DAOContact daoc;
 
   @Override
   public void create(Contact t) {
