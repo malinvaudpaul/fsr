@@ -7,6 +7,9 @@ import javax.persistence.EntityManager;
 import javax.persistence.EntityTransaction;
 import javax.persistence.PersistenceContext;
 
+import org.springframework.stereotype.Repository;
+
+@Repository("DAOAddress")
 public class DAOAddress implements IDAO<Address> {
 
   @PersistenceContext private EntityManager em = JpaUtil.getEmf().createEntityManager();

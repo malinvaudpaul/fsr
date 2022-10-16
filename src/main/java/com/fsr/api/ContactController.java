@@ -4,6 +4,9 @@ import com.fsr.entities.Contact;
 import com.fsr.services.ServiceContact;
 import java.net.URI;
 import java.util.List;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -21,10 +24,11 @@ import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 @RequestMapping(path = "/contacts")
 public class ContactController {
 
+  @Autowired
+  @Qualifier("ServiceContact")
   private ServiceContact serviceContact;
 
   public ContactController() {
-    this.serviceContact = new ServiceContact();
   }
 
   // CREATE CONTROLLER

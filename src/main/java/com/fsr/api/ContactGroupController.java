@@ -4,6 +4,9 @@ import com.fsr.entities.ContactGroup;
 import com.fsr.services.ServiceContactGroup;
 import java.net.URI;
 import java.util.List;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -21,6 +24,8 @@ import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 @RequestMapping(path = "/contactGroups")
 public class ContactGroupController {
 
+  @Autowired
+  @Qualifier("ServiceContactGroup")
   private ServiceContactGroup serviceContactGroup;
 
   public ContactGroupController() {

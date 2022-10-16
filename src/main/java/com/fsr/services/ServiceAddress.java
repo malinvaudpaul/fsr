@@ -4,9 +4,16 @@ import com.fsr.daos.DAOAddress;
 import com.fsr.entities.Address;
 import java.util.List;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.stereotype.Service;
+
+@Service("ServiceAddress")
 public class ServiceAddress implements IService<Address> {
 
-  DAOAddress daoa = new DAOAddress();
+  @Autowired
+  @Qualifier("DAOAddress")
+  DAOAddress daoa;
 
   @Override
   public void create(Address t) {
