@@ -27,9 +27,7 @@ public class PhoneNumController {
   @Qualifier("ServicePhoneNum")
   private ServicePhoneNum servicePhoneNum;
 
-  public PhoneNumController() {
-    this.servicePhoneNum = new ServicePhoneNum();
-  }
+  public PhoneNumController() {}
 
   // CREATE CONTROLLER
   @PostMapping(path = "", consumes = "application/json", produces = "application/json")

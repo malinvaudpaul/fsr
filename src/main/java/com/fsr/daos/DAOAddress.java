@@ -4,9 +4,9 @@ import com.fsr.entities.Address;
 import com.fsr.util.JpaUtil;
 import java.util.List;
 import javax.persistence.EntityManager;
-import javax.persistence.EntityTransaction;
 import javax.persistence.PersistenceContext;
 import org.springframework.stereotype.Repository;
+import org.springframework.transaction.annotation.Transactional;
 
 @Repository("DAOAddress")
 public class DAOAddress implements IDAO<Address> {
@@ -14,16 +14,11 @@ public class DAOAddress implements IDAO<Address> {
   @PersistenceContext private EntityManager em = JpaUtil.getEmf().createEntityManager();
 
   @Override
+  @Transactional
   public boolean create(Address entity) {
     boolean success = false;
     try {
-      EntityTransaction tx = this.em.getTransaction();
-      tx.begin();
-
       em.persist(entity);
-
-      tx.commit();
-
       success = true;
     } catch (Exception e) {
       e.printStackTrace();
@@ -32,6 +27,7 @@ public class DAOAddress implements IDAO<Address> {
   }
 
   @Override
+  @Transactional
   public Address read(int id) {
     try {
       Address a = this.em.find(Address.class, id);
@@ -44,6 +40,7 @@ public class DAOAddress implements IDAO<Address> {
   }
 
   @Override
+  @Transactional
   public List<Address> readAll() {
     try {
       return this.em.createQuery("SELECT c FROM Address c").getResultList();
@@ -54,21 +51,18 @@ public class DAOAddress implements IDAO<Address> {
   }
 
   @Override
+  @Transactional
   public boolean update(Address entity) {
     boolean success = false;
     try {
       Address a = this.em.find(Address.class, entity.getId());
-
-      EntityTransaction tx = em.getTransaction();
-      tx.begin();
 
       a.setStreet(entity.getStreet());
       a.setCity(entity.getCity());
       a.setZip(entity.getZip());
       a.setCountry(entity.getCountry());
 
-      tx.commit();
-
+      
       success = true;
     } catch (Exception e) {
       e.printStackTrace();
@@ -77,18 +71,13 @@ public class DAOAddress implements IDAO<Address> {
   }
 
   @Override
+  @Transactional
   public boolean delete(int id) {
     boolean success = false;
     try {
+
       Address a = this.em.find(Address.class, id);
-
-      EntityTransaction tx = em.getTransaction();
-      tx.begin();
-
       em.remove(a);
-
-      tx.commit();
-
       success = true;
     } catch (Exception e) {
       e.printStackTrace();

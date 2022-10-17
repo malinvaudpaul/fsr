@@ -27,9 +27,7 @@ public class ContactGroupController {
   @Qualifier("ServiceContactGroup")
   private ServiceContactGroup serviceContactGroup;
 
-  public ContactGroupController() {
-    this.serviceContactGroup = new ServiceContactGroup();
-  }
+  public ContactGroupController() {}
 
   // CREATE CONTROLLER
   @PostMapping(path = "", consumes = "application/json", produces = "application/json")

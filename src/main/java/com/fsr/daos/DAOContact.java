@@ -6,23 +6,20 @@ import java.util.List;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityTransaction;
 import org.springframework.stereotype.Repository;
+import org.springframework.transaction.annotation.Transactional;
 
 @Repository("DAOContact")
 public class DAOContact implements IDAO<Contact> {
+
+  private EntityManager em = JpaUtil.getEmf().createEntityManager();
+
   @Override
+  @Transactional
   public boolean create(Contact entity) {
     boolean success = false;
     try {
 
-      EntityManager em = JpaUtil.getEmf().createEntityManager();
-
-      EntityTransaction tx = em.getTransaction();
-      tx.begin();
-
       em.persist(entity);
-
-      tx.commit();
-
       success = true;
     } catch (Exception e) {
       e.printStackTrace();
@@ -31,9 +28,9 @@ public class DAOContact implements IDAO<Contact> {
   }
 
   @Override
+  @Transactional
   public Contact read(int id) {
     try {
-      EntityManager em = JpaUtil.getEmf().createEntityManager();
       Contact c = em.find(Contact.class, id);
       return c;
 
@@ -44,10 +41,9 @@ public class DAOContact implements IDAO<Contact> {
   }
 
   @Override
+  @Transactional
   public List<Contact> readAll() {
     try {
-      EntityManager em = JpaUtil.getEmf().createEntityManager();
-
       return em.createQuery("SELECT c FROM Contact c").getResultList();
     } catch (Exception e) {
       e.printStackTrace();
@@ -56,22 +52,17 @@ public class DAOContact implements IDAO<Contact> {
   }
 
   @Override
+  @Transactional
   public boolean update(Contact entity) {
     boolean success = false;
     try {
-      EntityManager em = JpaUtil.getEmf().createEntityManager();
       Contact c = em.find(Contact.class, entity.getId());
-
-      EntityTransaction tx = em.getTransaction();
-      tx.begin();
 
       c.setAddress(entity.getAddress());
       c.setEmail(entity.getEmail());
       c.setFirstName(entity.getFirstName());
       c.setLastName(entity.getLastName());
       c.setPhones(entity.getPhones());
-
-      tx.commit();
 
       success = true;
     } catch (Exception e) {
@@ -81,19 +72,12 @@ public class DAOContact implements IDAO<Contact> {
   }
 
   @Override
+  @Transactional
   public boolean delete(int id) {
     boolean success = false;
     try {
-      EntityManager em = JpaUtil.getEmf().createEntityManager();
       Contact c = em.find(Contact.class, id);
-
-      EntityTransaction tx = em.getTransaction();
-      tx.begin();
-
       em.remove(c);
-
-      tx.commit();
-
       success = true;
     } catch (Exception e) {
       e.printStackTrace();

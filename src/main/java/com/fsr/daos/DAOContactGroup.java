@@ -6,24 +6,20 @@ import java.util.List;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityTransaction;
 import org.springframework.stereotype.Repository;
+import org.springframework.transaction.annotation.Transactional;
 
 @Repository("DAOContactGroup")
 public class DAOContactGroup implements IDAO<ContactGroup> {
 
+  private EntityManager em = JpaUtil.getEmf().createEntityManager();
+
   @Override
+  @Transactional
   public boolean create(ContactGroup entity) {
     boolean success = false;
     try {
 
-      EntityManager em = JpaUtil.getEmf().createEntityManager();
-
-      EntityTransaction tx = em.getTransaction();
-      tx.begin();
-
       em.persist(entity);
-
-      tx.commit();
-
       success = true;
     } catch (Exception e) {
       e.printStackTrace();
@@ -32,9 +28,9 @@ public class DAOContactGroup implements IDAO<ContactGroup> {
   }
 
   @Override
+  @Transactional
   public ContactGroup read(int id) {
     try {
-      EntityManager em = JpaUtil.getEmf().createEntityManager();
       ContactGroup c = em.find(ContactGroup.class, id);
       return c;
 
@@ -45,10 +41,9 @@ public class DAOContactGroup implements IDAO<ContactGroup> {
   }
 
   @Override
+  @Transactional
   public List<ContactGroup> readAll() {
     try {
-      EntityManager em = JpaUtil.getEmf().createEntityManager();
-
       return em.createQuery("SELECT c FROM ContactGroup c").getResultList();
     } catch (Exception e) {
       e.printStackTrace();
@@ -57,19 +52,14 @@ public class DAOContactGroup implements IDAO<ContactGroup> {
   }
 
   @Override
+  @Transactional
   public boolean update(ContactGroup entity) {
     boolean success = false;
     try {
-      EntityManager em = JpaUtil.getEmf().createEntityManager();
       ContactGroup cg = em.find(ContactGroup.class, entity.getGroupId());
-
-      EntityTransaction tx = em.getTransaction();
-      tx.begin();
 
       cg.setContactGroups(entity.getContactGroups());
       cg.setGroupName(entity.getGroupName());
-
-      tx.commit();
 
       success = true;
     } catch (Exception e) {
@@ -79,18 +69,12 @@ public class DAOContactGroup implements IDAO<ContactGroup> {
   }
 
   @Override
+  @Transactional
   public boolean delete(int id) {
     boolean success = false;
     try {
-      EntityManager em = JpaUtil.getEmf().createEntityManager();
       ContactGroup cg = em.find(ContactGroup.class, id);
-
-      EntityTransaction tx = em.getTransaction();
-      tx.begin();
-
       em.remove(cg);
-
-      tx.commit();
 
       success = true;
     } catch (Exception e) {
