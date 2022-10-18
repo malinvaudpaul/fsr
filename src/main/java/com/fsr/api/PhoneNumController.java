@@ -6,6 +6,8 @@ import java.net.URI;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.context.ApplicationContext;
+import org.springframework.context.support.ClassPathXmlApplicationContext;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -26,16 +28,17 @@ public class PhoneNumController {
   @Autowired
   @Qualifier("ServicePhoneNum")
   private ServicePhoneNum servicePhoneNum;
+  private ApplicationContext context = new ClassPathXmlApplicationContext (new String("applicationContext.xml"));
+
 
   public PhoneNumController() {}
 
   // CREATE CONTROLLER
   @PostMapping(path = "", consumes = "application/json", produces = "application/json")
   public ResponseEntity<Object> addPhoneNum(@RequestBody PhoneNum phoneNum) {
-    /*Integer id = servicephoneNum.readAll().size() + 1;
-
-    phoneNum.setId(id);*/
-
+  
+    PhoneNum pn = (PhoneNum)context.getBean("PN1");
+    servicePhoneNum.create(pn);
     servicePhoneNum.create(phoneNum);
 
     URI location =

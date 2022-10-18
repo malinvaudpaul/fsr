@@ -15,6 +15,8 @@ import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 @Table(name = "contacts")
 @Entity
 public class Contact {
@@ -43,6 +45,7 @@ public class Contact {
       name = "CTC_GRP",
       joinColumns = @JoinColumn(name = "CTC_ID"),
       inverseJoinColumns = @JoinColumn(name = "GRP_ID"))
+  @JsonIgnore    
   private Set<ContactGroup> books = new HashSet<ContactGroup>();
 
   public Contact() {}
@@ -95,11 +98,19 @@ public class Contact {
     this.phones = phones;
   }
 
-  public Address getAddress() {
+  public Address getAdd() {
     return add;
   }
 
-  public void setAddress(Address address) {
+  public void setAdd(Address address) {
     this.add = address;
+  }
+
+  public Set<ContactGroup> getBooks(){
+    return this.books;
+  }
+
+  public void setBooks(Set<ContactGroup> books){
+    this.books = books;
   }
 }

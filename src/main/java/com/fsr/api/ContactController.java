@@ -6,6 +6,8 @@ import java.net.URI;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.context.ApplicationContext;
+import org.springframework.context.support.ClassPathXmlApplicationContext;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -26,16 +28,16 @@ public class ContactController {
   @Autowired
   @Qualifier("ServiceContact")
   private ServiceContact serviceContact;
+  private ApplicationContext context = new ClassPathXmlApplicationContext (new String("applicationContext.xml"));
 
   public ContactController() {}
 
   // CREATE CONTROLLER
   @PostMapping(path = "", consumes = "application/json", produces = "application/json")
   public ResponseEntity<Object> addContact(@RequestBody Contact contact) {
-    /*Integer id = serviceContact.readAll().size() + 1;
-
-    contact.setIdContact(id);  -> Pas la peine, l'id est renseigné automatiquement*/
-
+    
+    Contact c = (Contact) context.getBean("Contact");
+    serviceContact.create(c);
     serviceContact.create(contact);
 
     URI location =

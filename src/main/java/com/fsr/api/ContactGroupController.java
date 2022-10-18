@@ -6,6 +6,8 @@ import java.net.URI;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.context.ApplicationContext;
+import org.springframework.context.support.ClassPathXmlApplicationContext;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -26,16 +28,19 @@ public class ContactGroupController {
   @Autowired
   @Qualifier("ServiceContactGroup")
   private ServiceContactGroup serviceContactGroup;
+  private ApplicationContext context = new ClassPathXmlApplicationContext (new String("applicationContext.xml"));
+
 
   public ContactGroupController() {}
 
   // CREATE CONTROLLER
   @PostMapping(path = "", consumes = "application/json", produces = "application/json")
   public ResponseEntity<Object> addContactGroup(@RequestBody ContactGroup contactGroup) {
-    /*Integer id = serviceContactGroup.readAll().size() + 1;
+    
+  
+    ContactGroup cg = (ContactGroup)context.getBean("ContactGroup");
 
-    contactGroup.setGroupId(id);*/
-
+    serviceContactGroup.create(cg);
     serviceContactGroup.create(contactGroup);
 
     URI location =

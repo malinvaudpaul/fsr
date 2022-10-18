@@ -17,5 +17,42 @@
 <!--   
    <context:component-scan base-package="com.fsr.services.*" />
     <context:annotation-config/> -->
+    <bean id="Contact" class="com.fsr.entities.Contact" scope="prototype">
+        <property name="firstName" value="Toto"/>
+        <property name="lastName" value="Test"/>
+        <property name="email" value="test@gmail.com"/>
+        <property name="add"><ref bean="Address"/></property>
+        <property name="phones">
+            <set>
+                <ref bean ="PN1"/>
+                <ref bean ="PN2"/>
+            </set>
+        </property>
+        <property name="books">
+            <set>
+            <ref bean="ContactGroup"/>
+            </set>
+        </property>
+    </bean>
+
+    <bean id="PN1" class="com.fsr.entities.PhoneNum" scope="prototype">
+        <property name="PhoneKind" value="Iphone"/>
+        <property name="phoneNum" value="060606060606"/>
+    </bean>
+    <bean id="PN2" class="com.fsr.entities.PhoneNum" scope="prototype">
+        <property name="PhoneKind" value="Samsung"/>
+        <property name="phoneNum" value="070707070707"/>
+    </bean>
+
+    <bean id="Address" class="com.fsr.entities.Address" scope="prototype">
+        <property name="Street" value="street"/>
+        <property name="City" value="city"/>
+        <property name="zip" value="zip"/>
+        <property name="Country" value="country"/>
+    </bean>
+
+    <bean id="ContactGroup" class="com.fsr.entities.ContactGroup" scope="prototype">
+        <property name="groupName" value="first_gp"/> 
+    </bean>
 
 </beans>
