@@ -1,5 +1,6 @@
 package com.fsr.entities;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -23,8 +24,9 @@ public class PhoneNum {
   @Column(name = "phone_num")
   private String phoneNum;
 
-  @ManyToOne
+  @ManyToOne()
   @JoinColumn(name = "id_contact")
+  @JsonBackReference
   private Contact contact;
 
   public PhoneNum() {}
