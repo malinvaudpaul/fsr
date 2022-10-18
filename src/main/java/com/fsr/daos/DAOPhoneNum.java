@@ -4,15 +4,14 @@ import com.fsr.entities.PhoneNum;
 import com.fsr.util.JpaUtil;
 import java.util.List;
 import javax.persistence.EntityManager;
-import javax.persistence.EntityTransaction;
+import javax.persistence.PersistenceContext;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
 @Repository("DAOPhoneNum")
 public class DAOPhoneNum implements IDAO<PhoneNum> {
 
-
-  private EntityManager em = JpaUtil.getEmf().createEntityManager();
+  @PersistenceContext private EntityManager em = JpaUtil.getEmf().createEntityManager();
 
   @Override
   @Transactional
@@ -73,7 +72,7 @@ public class DAOPhoneNum implements IDAO<PhoneNum> {
   public boolean delete(int id) {
     boolean success = false;
     try {
-      
+
       PhoneNum pn = em.find(PhoneNum.class, id);
       em.remove(pn);
 

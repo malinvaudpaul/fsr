@@ -4,14 +4,14 @@ import com.fsr.entities.ContactGroup;
 import com.fsr.util.JpaUtil;
 import java.util.List;
 import javax.persistence.EntityManager;
-import javax.persistence.EntityTransaction;
+import javax.persistence.PersistenceContext;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
 @Repository("DAOContactGroup")
 public class DAOContactGroup implements IDAO<ContactGroup> {
 
-  private EntityManager em = JpaUtil.getEmf().createEntityManager();
+  @PersistenceContext private EntityManager em = JpaUtil.getEmf().createEntityManager();
 
   @Override
   @Transactional
