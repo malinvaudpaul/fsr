@@ -69,8 +69,8 @@ public class AddressController {
   @PutMapping(path = "/{id}", consumes = "application/json", produces = "application/json")
   public ResponseEntity<Object> updateAddress(
       @PathVariable("id") int id, @RequestBody Address address) {
-
-    serviceAddress.update(address);
+      address.setId(id);
+      serviceAddress.update(address);
     URI location =
         ServletUriComponentsBuilder.fromCurrentRequest()
             .path("/{id}")

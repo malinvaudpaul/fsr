@@ -64,7 +64,8 @@ public class ContactController {
   @PutMapping(path = "/{id}", consumes = "application/json", produces = "application/json")
   public ResponseEntity<Object> updateContact(
       @PathVariable("id") int id, @RequestBody Contact contact) {
-    serviceContact.update(contact);
+        contact.setId(id);
+        serviceContact.update(contact);
 
     URI location =
         ServletUriComponentsBuilder.fromCurrentRequest()

@@ -56,9 +56,12 @@ public class DAOPhoneNum implements IDAO<PhoneNum> {
     try {
       PhoneNum pn = em.find(PhoneNum.class, entity.getId());
 
+      em.persist(pn);
+
       pn.setContact(entity.getContact());
       pn.setPhoneKind(entity.getPhoneKind());
       pn.setPhoneNum(entity.getPhoneNum());
+
 
       success = true;
     } catch (Exception e) {

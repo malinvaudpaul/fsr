@@ -67,6 +67,7 @@ public class ContactGroupController {
   @PutMapping(path = "/{id}", consumes = "application/json", produces = "application/json")
   public ResponseEntity<Object> updateContactGroup(
       @PathVariable("id") int id, @RequestBody ContactGroup contactGroup) {
+        contactGroup.setGroupId(id);
     serviceContactGroup.update(contactGroup);
 
     URI location =
