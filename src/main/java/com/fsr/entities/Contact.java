@@ -1,5 +1,6 @@
 package com.fsr.entities;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 import java.util.HashSet;
 import java.util.Set;
@@ -37,7 +38,7 @@ public class Contact {
   @GeneratedValue(strategy = GenerationType.IDENTITY)
   private int id;
 
-  @OneToOne(cascade = CascadeType.PERSIST)
+  @OneToOne(cascade = CascadeType.ALL)
   @JoinColumn(name = "id_address")
   private Address add;
 
@@ -46,6 +47,7 @@ public class Contact {
       name = "CTC_GRP",
       joinColumns = @JoinColumn(name = "CTC_ID"),
       inverseJoinColumns = @JoinColumn(name = "GRP_ID"))
+  @JsonIgnore
   private Set<ContactGroup> books = new HashSet<ContactGroup>();
 
   public Contact() {}
@@ -105,4 +107,12 @@ public class Contact {
   public void setAdd(Address address) {
     this.add = address;
   }
+
+  public Set<ContactGroup> getBooks() {
+    return books;
+  }
+
+  public void setBooks(Set<ContactGroup> books) {
+    this.books = books;
+  } 
 }
