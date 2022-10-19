@@ -57,6 +57,7 @@ public class DAOAddress implements IDAO<Address> {
     try {
       Address a = this.em.find(Address.class, entity.getId());
 
+      em.persist(a);
       a.setStreet(entity.getStreet());
       a.setCity(entity.getCity());
       a.setZip(entity.getZip());

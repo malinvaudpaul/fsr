@@ -60,6 +60,8 @@ public class DAOContactGroup implements IDAO<ContactGroup> {
     try {
       ContactGroup cg = em.find(ContactGroup.class, entity.getGroupId());
 
+      em.persist(cg);
+      
       cg.setContactGroups(entity.getContactGroups());
       cg.setGroupName(entity.getGroupName());
 

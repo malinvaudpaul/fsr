@@ -58,6 +58,9 @@ public class DAOContact implements IDAO<Contact> {
     try {
       Contact c = em.find(Contact.class, entity.getId());
 
+      em.persist(c);
+
+
       c.setAdd(entity.getAdd());
       c.setEmail(entity.getEmail());
       c.setFirstName(entity.getFirstName());
